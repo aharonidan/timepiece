@@ -325,7 +325,10 @@
 
   /* Let's discuss when those functions will be performed. */
 
+  var loaded = false;
+
   $(document).on('turbolinks:load', function() {
+
     // Might want to reformat to move if-statement : should also be performed before 'reset_time' so as not to make a blank AJAX request.
     if ($(".timepiece-analog").length > 0){
       get_analog()
@@ -339,9 +342,12 @@
       set_timer()
       show_timer()
     }
-    if ($(".timepiece-countdown").length > 0){
-      set_countdown()
-      show_countdown()
+    if (!loaded){
+      if ($(".timepiece-countdown").length > 0){
+        set_countdown()
+        show_countdown()
+        loaded = true;
+      }
     }
   })
   $(document).on('page:load', function(){

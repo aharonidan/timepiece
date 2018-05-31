@@ -325,7 +325,7 @@
 
   /* Let's discuss when those functions will be performed. */
 
-  $(document).ready(function(){
+  $(document).on('turbolinks:load', function() {
     // Might want to reformat to move if-statement : should also be performed before 'reset_time' so as not to make a blank AJAX request.
     if ($(".timepiece-analog").length > 0){
       get_analog()
